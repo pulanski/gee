@@ -1,0 +1,31 @@
+ans = b
+if a > b:
+    if a > c:
+        ans = a
+    else:
+        ans = b
+else:
+     if b < c:
+         ans = c
+max3 = ans
+if a < 3:
+    ans = 0
+n = 8
+i = 1
+f = i
+while i < n:
+    i = i + 1
+    f = f * i
+ans = f
+# b = 2
+# b = 3 + 2 or a + b and ('n' > 5)
+# a = b
+# while i < n:
+#     i = i + 1
+#     f = f * i
+#
+# if b > a:
+#     n = 5
+#     if b < c:
+#         a = 3
+

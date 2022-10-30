@@ -1,0 +1,19 @@
+################
+# System Files #
+################
+
+# MacOS directory attributes
+**/.DS_Store
+
+# Windows directory attributes
+**/Thumbs.db
+
+####################
+# Extraneous files #
+####################
+
+# Snyk test reports
+**/.dccache
+
+# .env file
+.env
