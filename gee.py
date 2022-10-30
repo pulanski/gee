@@ -3,6 +3,9 @@ import string
 import sys
 from typing import Dict, List
 
+import colored
+from colored import bg, fg, stylize, stylize_interactive
+
 """
 Compiler front-end for the Gee Programming Language
 
@@ -391,7 +394,12 @@ def parse(text):
 
     global tokens
     tokens = Lexer(text)
-    return parseStmtList()
+    ast = parseStmtList()
+    print()
+    print(stylize(" AST ", fg("green") + bg("black")))
+    print()
+    print(ast)
+    return ast
 
 
 def parseStmtList():
@@ -462,7 +470,6 @@ def assign():
     tokens.next()  # skip the end of statement token, `;`
     assign = Assign(identifier, expr)
 
-    assign.tipe(tm)
     assign.meaning(state)
 
     return assign
@@ -828,6 +835,9 @@ def mklines(filename):
     lines = []
     pos = [0]
     ct = 0
+    print()
+    print(stylize(" Source Code ", fg("green") + bg("black")))
+    print()
     for line in inn:
         ct += 1
         line = line.rstrip() + ";"
@@ -858,7 +868,7 @@ def error(msg):
     """
     Helper function for exiting and displaying the provided error message
     """
-    # print msg
+
     sys.exit(msg)
 
 
@@ -885,15 +895,15 @@ def error_message(error_type: str, expected: str, found: str):
     return err_msg
 
 
-# def typecheck(program_ast: StatementList):
-#     """
-#     Typecheck the program reporting any type errors encountered
-#     over the course of walking the AST checking the types on
-#     needed nodes.
-#     """
-#
-#     print()
-# program_ast.tipe(tm)
+def semantic_analysis(ast: StatementList):
+    print()
+    print(stylize(" Program Execution State (Evaluation) ", fg("green") + bg("black")))
+    ast.meaning(state)
+    print_state(state)
+    print()
+    print(stylize(" Program Execution State (Typecheck) ", fg("green") + bg("black")))
+    print()
+    ast.tipe(tm)
 
 
 def print_state(state: Dict):
@@ -927,12 +937,8 @@ def main():
     if len(sys.argv) < 2 + ct:
         print("Usage:  %s filename" % sys.argv[0])
         return
-    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    program_ast = parse("".join(mklines(sys.argv[1 + ct])))
-    program_ast.meaning(state)
-    # print(program_ast)
-    # print_state(state)
-    # typecheck(program_ast)
+    ast = parse("".join(mklines(sys.argv[1 + ct])))
+    semantic_analysis(ast)
     return
 
 

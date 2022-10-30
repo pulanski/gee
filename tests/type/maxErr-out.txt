@@ -1,0 +1,5 @@
+a number
+b number
+m number
+w boolean
+Type Error: boolean = number!

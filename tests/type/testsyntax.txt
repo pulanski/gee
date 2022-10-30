@@ -1,0 +1,44 @@
+while i < n {
+    stuff in here
+}
+
+arabic_while
+
+print()
+println()
+
+french_print()
+
+node
+val
+next
+
+:{hello world}
+
+:{hello world} >| println()
+
+(:"a")->("b")->("c")->
+
+for i in 0..=12 {
+
+}
+
+2³ = 8
+
+∛8 = 2
+
+³³√8589934592 = 2
+
+squareroot {
+integer
+root
+}
+
+∫₁⁶x³ = ...
+
+∫₁‥₆x³ = ...
+
+
+bob->owns->car
+
+bob owns car
